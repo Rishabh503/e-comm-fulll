@@ -47,20 +47,28 @@ const RegisterReal = () => {
         // };
         formData.append("avatar",avatar)
             try {
-                const response=await fetch("http://localhost:5000/api/v1/users/register",{
-                    method:"POST",
-                   
-                    body:formData
-                })
-                if (!response.ok) {
-                    throw new Error(`HTTP error! Status: ${response.status}`);
+                const response = await fetch("http://localhost:5000/api/v1/users/register", {
+                    method: "POST",
+                    body: formData,
+                });
+        
+                let responseData;
+                try {
+                    responseData = await response.json();
+                } catch (jsonError) {
+                    const textResponse = await response.text(); // Get raw response if JSON parsing fails
+                    throw new Error(`Server returned non-JSON response: ${textResponse}`);
                 }
         
-                const result = await response.json();
-                console.log("Success:", result);
+                if (!response.ok) {
+                    throw new Error(responseData.message || `HTTP error! Status: ${response.status}`);
+                }
+        
+                console.log("Success:", responseData);
             } catch (error) {
-                console.log("error from sending data to backend ;",error)
+                console.error("Error from sending data to backend:", error.message);
             }
+        
     }
   return (
     <section className='min-h-screen min-w-full w-full '>
