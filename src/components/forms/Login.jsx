@@ -1,18 +1,26 @@
 import { useState } from "react";
 import { NavLink } from "react-router";
 import { toast } from "react-toastify";
+// import 'dotenv/config'
 
 const LoginForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [userLoggedIn,setUserLoggedIn]=useState(false)
+  const [admin,setAdmin]=useState(false)
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log("Email:", email);
-    console.log("Password:", password);
+    // console.log(import.meta.env.VITE_ADMIN_EMAIL);  // ✅ Correct
 
-
+    if(email==import.meta.env.VITE_ADMIN_EMAIL){
+      if(password==import.meta.env.VITE_ADMIN_PASSWORD){
+        setAdmin(true)
+        console.log("hi from checkk")
+      }
+      
+    }
     const formData=new FormData();
     formData.append("email",email);
     formData.append("password",password);
@@ -51,6 +59,8 @@ const LoginForm = () => {
         <h2 className="text-white text-center text-2xl font-semibold mb-4">Login</h2>
         <p className="text-white">
           {userLoggedIn?'u have been logged in succesfully':"kindly login to get started"}
+          <br />
+          {admin?"welcome admin":""}
         </p>
         <form onSubmit={handleSubmit}>
           <div className="mb-4">

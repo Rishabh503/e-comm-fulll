@@ -8,6 +8,8 @@ import RegisterReal from './components/forms/RegisterReal.jsx'
 import LoginForm from './components/forms/Login.jsx'
 import { RouterProvider } from 'react-router-dom'
 import Home from './components/desgin/Home.jsx'
+import Main from './pages/Main.jsx'
+import Start from './pages/Main.jsx'
 
 const router=createBrowserRouter(
     createRoutesFromElements(
@@ -15,6 +17,7 @@ const router=createBrowserRouter(
           <Route path='/register' element={<RegisterReal/>}/>
           <Route path='' element={<Home/>}/>
           <Route path='/login' element={<LoginForm/>}/>
+          <Route path='/start' element={<Start/>}/>
       </Route>
 
     )
