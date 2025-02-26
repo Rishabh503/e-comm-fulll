@@ -18,12 +18,12 @@ const NavBar = () => {
                 <p>
                     Categories
                 </p>
-                <p>
-                     Account
-                </p>
-                <p>
-                  About Us
-                </p>
+                <NavLink to='/bill'>
+                     Bill
+                </NavLink>
+                <NavLink to='/billDashBoard'>
+                 Bill DashBoard
+                </NavLink>
                 <p>
                     Cart
                 </p>

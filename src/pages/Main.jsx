@@ -68,18 +68,20 @@ const Start =  () => {
         <div className='p-4 text-white'>
             <div className='p-4'>
                 <div className=''>
-                 <p className='text-2xl'>
-                    Categories   
+                 <p className='text-2xl mb-2'>
+                    Browse By Categories   
                  </p>
                 </div>
                 <div className='flex w-full gap-5 overflow-auto'>
                     {!loading?
                     data.data.map((d,i)=>(
-                        <div className='bg-gray-950 shadow-md text-white w-1/4 flex-shrink-0  flex flex-col px-2 py-1 gap-4 h-auto '>
-                            <div className=''>
-                                <img src="image.png" alt="" />
+                        <div key={i} className='bg-gray-950 shadow-lg rounded-lg text-white w-1/4 flex-shrink-0  flex flex-col px-2 py-1 gap-4 h-auto '>
+                            <div className='flex items-center justify-center '>
+                               <div className='h-1/2 w-1/2  '>
+                               <img src="image2.png" alt="" />
+                               </div>
                             </div>
-                            <div>
+                            <div className='mt-10'>
                                 <p className='text-2xl font-semibold text-gray-200'>{d.name}</p>
                                 <p className='text-gray-500'>
                                     description:{d.description}

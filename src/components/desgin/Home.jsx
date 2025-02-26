@@ -10,8 +10,13 @@ const Home = () => {
               <p className="text-md">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat veniam ipsum voluptates aliquid ducimus adipisci, accusantium itaque corrupti animi, numquam distinctio dolorum laboriosam inventore error temporibus quas. Consectetur, dolor velit!</p>
               <div className='flex justify-between gap-5'>
               <NavLink to='/start' className="mt-2 px-4 py-2 bg-[#FFA500] text-[#121212] rounded">Start Shopping</NavLink>
-              <NavLink to='/register'
-                className="mt-2 px-4 py-2 bg-[#FFA500] text-[#121212] rounded">New User ?</NavLink>
+              <NavLink to='/login'
+                className="mt-2 px-4 py-2 bg-[#FFA500] text-[#121212] rounded">Login ?</NavLink>
+              <NavLink to='/bill'
+                className="mt-2 px-4 py-2 bg-[#FFA500] text-[#121212] rounded">Bill </NavLink>
+              <NavLink to='/billDashBoard'
+                className="mt-2 px-4 py-2 bg-[#FFA500] text-[#121212] rounded">BillDashBoard</NavLink>
+           
               </div>
               
             </div>

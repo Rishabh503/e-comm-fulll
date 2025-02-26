@@ -1,13 +1,26 @@
 import { useState } from "react";
 import { NavLink } from "react-router";
 import { toast } from "react-toastify";
+import { Admin } from "../../pages/Admin";
+import Home from "../desgin/Home";
+// import { lstat } from "fs";
 // import 'dotenv/config'
 
 const LoginForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [userLoggedIn,setUserLoggedIn]=useState(false)
-  const [admin,setAdmin]=useState(false)
+
+  const userLoggedInAlready=localStorage.getItem('user')
+  const userIsThere=JSON.parse(userLoggedInAlready) || {}
+  const [userLoggedIn,setUserLoggedIn]=useState(userIsThere.user)
+
+  const adminLoggedIn=localStorage.getItem('admin');
+  console.log(JSON.parse(adminLoggedIn))
+  const adminIsThere=JSON.parse(adminLoggedIn) || {}
+  console.log(adminIsThere.admin)
+  const [admin,setAdmin]=useState(adminIsThere.admin)
+
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -18,6 +31,7 @@ const LoginForm = () => {
       if(password==import.meta.env.VITE_ADMIN_PASSWORD){
         setAdmin(true)
         console.log("hi from checkk")
+        localStorage.setItem('admin',JSON.stringify({admin:true}));
       }
       
     }
@@ -44,7 +58,9 @@ const LoginForm = () => {
                throw new Error(responseData.message || `HTTP error! Status: ${response.status}`);
            }
           toast.success(responseData.message)
+          localStorage.setItem('user',JSON.stringify({user:true}));
           setUserLoggedIn(true)
+       
           console.log("Success:", responseData);
       } catch (error) {
         toast.error(error.message)
@@ -52,7 +68,8 @@ const LoginForm = () => {
           setUserLoggedIn(false)
       }
   };
-
+    if(userLoggedIn && !admin) return <Home/>
+    else if(userLoggedIn && admin) return <Admin/>
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-900">
       <div className="bg-gray-800 p-6 rounded-lg shadow-lg w-96">

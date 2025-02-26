@@ -46,8 +46,11 @@ const RegisterReal = () => {
         formData.append("password", password);
         formData.append("avatar",avatar);
 
-
-        
+ 
+        //try to fetch the response otherwise throw error 
+        //try to convet repsonse into json otherwise throw error 
+        // check is response ok if not throw error 
+        //toast messages accordingly and save it if u want 
             try {
                 const response = await fetch("http://localhost:5000/api/v1/users/register", {
                     method: "POST",
