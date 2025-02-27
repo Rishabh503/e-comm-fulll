@@ -15,9 +15,9 @@ const NavBar = () => {
                 <NavLink to='/box'>
                    Products
                 </NavLink>
-                <p>
-                    Categories
-                </p>
+                <NavLink to='/enquiryDashBoard'>
+                    Enquiries
+                </NavLink>
                 <NavLink to='/bill'>
                      Bill
                 </NavLink>

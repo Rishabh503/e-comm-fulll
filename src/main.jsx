@@ -15,6 +15,7 @@ import BillForm from './components/others/Bill.jsx'
 import { BillDashBoard } from './components/others/BillDashboard.jsx'
 import Dropbox from './components/others/DropDown.jsx'
 import { Visit } from './components/others/Visit.jsx'
+import EnquiryDashboard from './components/enquiry/EnquiryDashBoard.jsx'
 
 
 const router=createBrowserRouter(
@@ -29,6 +30,7 @@ const router=createBrowserRouter(
           <Route path='/visit' element={<Visit/>}/>
           <Route path='/bill' element={<BillForm/>}/>
           <Route path='/billDashBoard' element={<BillDashBoard/>}/>
+          <Route path='/enquiryDashBoard' element={<EnquiryDashboard/>}/>
   
       </Route>
 
