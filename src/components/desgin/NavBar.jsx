@@ -12,9 +12,9 @@ const NavBar = () => {
                    </NavLink>
                 </div>
                 <div className='flex justify-between gap-4'>
-                <p>
+                <NavLink to='/box'>
                    Products
-                </p>
+                </NavLink>
                 <p>
                     Categories
                 </p>

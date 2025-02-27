@@ -3,14 +3,15 @@ import { toast, ToastContainer } from "react-toastify";
 
 export default function BillForm() {
   const [form, setFormData] = useState({
-    billTo: "",
-    amount: "",
+    billTo: "rishabh",
+    amount: "2400",
     date: "",
-    contact: "",
-    email: "",
-    status: "",
-    category: "",
-    reminder: ""
+    contact: "9650594608",
+    email: "rihab@12",
+    status: "warranty",
+    category: "laptop",
+    reminder: "",
+    warranty:"",
   });
 
   const handleChange = (e) => {
@@ -29,7 +30,7 @@ export default function BillForm() {
       email: form.email,
       status: form.status,
       category: form.category,
-      warranty: 1, // Default warranty value (change if needed)
+      warranty: form.warranty, // Default warranty value (change if needed)
       remValue1: form.reminder,
       date: formattedDate
     };
@@ -58,7 +59,8 @@ export default function BillForm() {
         email: "",
         status: "",
         category: "",
-        reminder: ""
+        reminder: "",
+        warranty:"",
       });
     } catch (error) {
       toast.error(error.message)
@@ -76,6 +78,7 @@ export default function BillForm() {
         <input type="date" name="date" value={form.date} onChange={handleChange} className="w-full p-2 border rounded-md" />
         <input type="text" name="contact" placeholder="Mobile" value={form.contact} onChange={handleChange} className="w-full p-2 border rounded-md" />
         <input type="email" name="email" placeholder="Email" value={form.email} onChange={handleChange} className="w-full p-2 border rounded-md" />
+        <input type="number" name="warranty" placeholder="warranty" value={form.warranty} onChange={handleChange} className="w-full p-2 border rounded-md" />
         <input type="text" name="status" placeholder="Payment Status" value={form.status} onChange={handleChange} className="w-full p-2 border rounded-md" />
         <select name="category" value={form.category} onChange={handleChange} className="w-full p-2 border rounded-md">
           <option value="telephone">Telephone</option>
