@@ -12,7 +12,8 @@ import Main from './pages/Main.jsx'
 import Start from './pages/Main.jsx'
 import { Admin } from './pages/Admin.jsx'
 import BillForm from './components/others/Bill.jsx'
-import BillDashboard from './components/others/BillDashboard.jsx'
+import { BillDashBoard } from './components/others/BillDashboard.jsx'
+
 
 const router=createBrowserRouter(
     createRoutesFromElements(
@@ -23,7 +24,8 @@ const router=createBrowserRouter(
           <Route path='/start' element={<Start/>}/>
           <Route path='/admin' element={<Admin/>}/>
           <Route path='/bill' element={<BillForm/>}/>
-          <Route path='/billDashboard' element={<BillDashboard/>}/>
+          <Route path='/billDashBoard' element={<BillDashBoard/>}/>
+  
       </Route>
 
     )

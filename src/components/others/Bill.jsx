@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { toast, ToastContainer } from "react-toastify";
 
 export default function BillForm() {
   const [form, setFormData] = useState({
@@ -47,8 +48,8 @@ export default function BillForm() {
       if (!response.ok) {
         throw new Error(data.message || "Something went wrong");
       }
-
-      alert("Bill created successfully");
+      toast.success("bill created succesfully")
+      // alert("Bill created successfully");
       setFormData({
         billTo: "",
         amount: "",
@@ -60,8 +61,9 @@ export default function BillForm() {
         reminder: ""
       });
     } catch (error) {
+      toast.error(error.message)
       console.error("Error creating bill:", error);
-      alert("Failed to create bill");
+      // alert("Failed to create bill");
     }
   };
 
@@ -76,11 +78,11 @@ export default function BillForm() {
         <input type="email" name="email" placeholder="Email" value={form.email} onChange={handleChange} className="w-full p-2 border rounded-md" />
         <input type="text" name="status" placeholder="Payment Status" value={form.status} onChange={handleChange} className="w-full p-2 border rounded-md" />
         <select name="category" value={form.category} onChange={handleChange} className="w-full p-2 border rounded-md">
-          <option value="">Select Category</option>
+          <option value="telephone">Telephone</option>
           <option value="laptop2">laptop</option>
-          <option value="Water">Water</option>
-          <option value="Internet">Internet</option>
-          <option value="Rent">Rent</option>
+          <option value="EPBAX">EPBAX</option>
+          <option value="Panasonic">Panasonic</option>
+          {/* <option value="Rent">Rent</option> */}
         </select>
         <h3 className="text-lg font-semibold">Reminder</h3>
         <select name="reminder" value={form.reminder} onChange={handleChange} className="w-full p-2 border rounded-md">
