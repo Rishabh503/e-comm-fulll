@@ -67,7 +67,7 @@ export const BillDashBoard = () => {
                   {item.billTo.createdAt.slice(0,10)}
                 </p>
                 <p className='w-1/5'>
-                  {item.billTo._id.slice(4,10)}
+                  {item.reminder[0].billNo.slice(0,8)}
                 </p>
                 <p className='w-1/5'>
                   {item.contact}
