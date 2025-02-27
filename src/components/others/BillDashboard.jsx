@@ -6,6 +6,8 @@ export const BillDashBoard = () => {
   const headers=["Client Name","Order Date","BIll No","Reminder","Status","Warranty"]
   const [data,setData]=useState([]);
   const [loading,setLoading]=useState(false);
+  const [search,setSearch]=useState("");
+  const [searching,setSearching]=useState(false);
 
   const items = [
     { billNo: "Important File 1", link: "https://example.com/file1" },
@@ -42,21 +44,34 @@ export const BillDashBoard = () => {
   const reminderData=billingData.map(item=>item.reminder)
   // console.log("data of all reminders :",reminderData)
   console.log(reminderData)
-
+  const filteredBillingData = billingData.filter((item) =>
+    item.billTo.username.toLowerCase().includes(search.toLowerCase()) ||
+    item.billTo.createdAt.includes(search) ||
+    item._id.toLowerCase().includes(search.toLowerCase()) ||
+  //  item.contact.toLowerCase().includes(search.toLocaleLowerCase()) ||
+  item.contact.toString().includes(search) ||
+    item.status.toLowerCase().includes(search.toLowerCase())
+  )||billingData ;
   
+  // item.contact.includes(search) ||
+  const handleSearch=(e)=>{
+    setSearch(e.target.value);
+    setSearching(true);
+  }
+  // setSearching(false);
 
   return (
     <section className='min-h-screen w-full'>
       <div className='p-6'>
         <div className='flex justify-between mb-5'>
-          <p className='text-center font-semibold'>
+          <p className='text-center text-2xl font-semibold'>
             BILL DASHBOARD
           </p>
           <div className='w-3/4 flex items-center gap-2'>
          
             Search
             <FaSearch />
-            <input className='bg-gray-200 rounded-md w-3/4 border'  type="text" name="" id="" />
+            <input className='bg-gray-200 rounded-md w-3/4 border'  onChange={(e)=>handleSearch(e)} value={search} type="text" name="" id="" />
           </div>
         </div>
         <div className=' text-start items-center w-full border'>
@@ -71,7 +86,7 @@ export const BillDashBoard = () => {
         </div>
         <div className=' text-start items-center w-full border'>
           {
-            billingData.map((item,i)=>(
+            filteredBillingData.map((item,i)=>(
               <div key={i} className={`w-full border ${i%2==0?"bg-blue-200":"bg-white"}  flex gap-3`}>
                 <p className='w-1/5'>
                   
@@ -97,6 +112,7 @@ export const BillDashBoard = () => {
                 </p>
               </div>
             ))
+            
           }
         </div>
       </div>
