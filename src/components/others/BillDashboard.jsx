@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { toast } from 'react-toastify';
 import Dropbox from './DropDown';
 import { FaSearch } from "react-icons/fa";
-export const BillDashBoard = () => {
+export const BillDashBoard = ({enquiry}) => {
   const headers=["Client Name","Order Date","BIll No","Reminder","Status","Warranty"]
   const [data,setData]=useState([]);
   const [loading,setLoading]=useState(false);

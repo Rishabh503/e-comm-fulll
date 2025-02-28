@@ -1,5 +1,6 @@
-import React from "react";
-
+import React, { useEffect, useState } from "react";
+import { BillDashBoard } from "../others/BillDashboard";
+import { useNavigate } from "react-router-dom";
 const enquiries =[
     {
       "companyName": "Tata Consultancy Services",
@@ -82,9 +83,46 @@ const enquiries =[
       "status": "Pending"
     }
   ]
-  
+
 
 const EnquiryDashboard = () => {
+
+  
+        const [data,setData]=useState([]);
+        const [loading,setloading]=useState(false);
+        const [selectedEnquiry,setSelectedEnquiry]=useState(false);
+
+        const navigate=useNavigate()
+
+        useEffect(()=>{
+          fetch(
+            "http://localhost:5000/api/v1/enquiry/getALlEnquires"
+          ).then((response)=>{
+            if(!response.ok){
+              throw new Error("couldnot get the repsone")
+            }
+            return response.json();
+          }).then(
+            (data)=>{
+              setData(data);
+              setloading(true);
+              
+            }
+          ).catch((e)=>(console.log(e)))
+        },[])
+
+// {loading?console.log(data):""}
+
+    const enquiryData=data.data||[];
+    {loading?console.log("enquiry ka data",enquiryData):""}
+
+    const handleOnClick=(e)=>{
+      console.log(`{e}`)
+    //  navigate('/bill-dashboard/${id}');
+        navigate(`/enquiry/${e}`)
+    }
+
+
   return (
     <section className="min-h-screen w-full">
         <div className="w-full  mx-auto p-6">
@@ -100,13 +138,13 @@ const EnquiryDashboard = () => {
         <span>Action</span>
       </div>
 
-      {enquiries.map((enquiry, index) => (
+      {enquiryData.map((enquiry, index) => (
         <div
           key={index}
           className={`grid ${index%2==0?"bg-gray-400":"bg-white"} grid-cols-7 gap-5 items-center border-b border-gray-300 p-3`}
         >
           <span className="truncate">{enquiry.companyName}</span>
-          <span>{enquiry.date}</span>
+          <span>{enquiry.createdAt}</span>
           <span>{enquiry.contact}</span>
           <span className="truncate">{enquiry.problem}</span>
           <span className="truncate">{enquiry.requirements}</span>
@@ -121,7 +159,7 @@ const EnquiryDashboard = () => {
           >
             {enquiry.status}
           </span>
-          <button className="bg-orange-400 text-white px-4 py-1 rounded-md hover:bg-blue-700">
+          <button onClick={()=>handleOnClick(`${enquiry._id}`)} className="bg-orange-400 text-white px-4 py-1 rounded-md hover:bg-blue-700">
             View
           </button>
         </div>
