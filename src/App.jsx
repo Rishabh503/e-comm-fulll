@@ -5,6 +5,7 @@ import LoginForm from "./components/forms/Login";
 import { Outlet } from "react-router";
 import Home from "./components/desgin/Home";
 import NavBar from "./components/desgin/NavBar";
+import { Button } from "./components/ui/button";
 
 export default function App() {
   return (
@@ -12,6 +13,7 @@ export default function App() {
       <ToastContainer/>
       <NavBar/>
       <Outlet/>
+      
     </div>
   )
 }

@@ -17,6 +17,7 @@ import Dropbox from './components/others/DropDown.jsx'
 import { Visit } from './components/others/Visit.jsx'
 import EnquiryDashboard from './components/enquiry/EnquiryDashBoard.jsx'
 import EnquiryDetails from './components/enquiry/EnquiryDetails.jsx'
+import {Trial} from './components/others/Trial'
 
 
 const router=createBrowserRouter(
@@ -27,7 +28,8 @@ const router=createBrowserRouter(
           <Route path='/login' element={<LoginForm/>}/>
           <Route path='/start' element={<Start/>}/>
           <Route path='/admin' element={<Admin/>}/>
-          <Route path='/box' element={<Dropbox/>}/>
+          {/* for trying */}
+          <Route path='/box' element={<Trial/>}/>  
           <Route path='/visit' element={<Visit/>}/>
           <Route path='/bill' element={<BillForm/>}/>
           <Route path='/billDashBoard' element={<BillDashBoard/>}/>

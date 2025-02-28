@@ -1,5 +1,7 @@
+import { Dialog } from "@radix-ui/react-dialog";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
+import { Trial } from "../others/Trial";
 
 const EnquiryDetails = () => {
   const { enquiryId } = useParams();
@@ -69,7 +71,7 @@ const EnquiryDetails = () => {
 <div className="flex justify-between my-6">
 <h3 className="text-2xl font-semibold text-gray-800 mb-3">Visits</h3>
           <button className="bg-blue-600 text-white px-4 py-2 rounded-lg shadow-md hover:bg-blue-700 transition">
-            Assign New Visit
+            <Trial display={"assing new visit"}/>
           </button>
 </div>
           {visitsData.length > 0 ? (
@@ -109,7 +111,7 @@ const EnquiryDetails = () => {
         <div className="mt-8 mb-8 flex justify-between">
        <h3 className="text-2xl font-semibold text-gray-800 mb-3">Follow-Ups</h3>
        <button className="bg-green-600 text-white px-4 py-2 rounded-lg shadow-md hover:bg-green-700 transition">
-            Assign New Follow-Up
+           <Trial display={"Assign a New Follow Up"}/>
           </button>
        </div>
           {loading && followUpData.length > 0 ? (
