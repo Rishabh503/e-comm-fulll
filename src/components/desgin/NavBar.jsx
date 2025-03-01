@@ -18,6 +18,9 @@ const NavBar = () => {
                 <NavLink to='/enquiryDashBoard'>
                     Enquiries
                 </NavLink>
+                <NavLink to='/complaintsDashBoard'>
+                    Complaints
+                </NavLink>
                 {/* <NavLink to='/bill'>
                      Bill
                 </NavLink> */}

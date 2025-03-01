@@ -84,44 +84,59 @@ export default function BillForm() {
   };
 
   return (
-
-    <Sheet>
-
+    <Sheet >
       <SheetTrigger asChild>
         <Button className='bg-red-400' variant="outline">New Bill</Button>
       </SheetTrigger>
-        <SheetContent>
+      <SheetContent className="overflow-y-auto max-h-screen w-full">
+
         <div className="max-w-lg mx-auto p-6 bg-white shadow-md rounded-lg">
-      {/* <h2 className="text-xl font-semibold mb-4">Add Bill</h2> */}
-      <form onSubmit={handleSubmit} className="space-y-4">
-        <input type="text" name="billTo" placeholder="Bill to" value={form.billTo} onChange={handleChange} className="w-full p-2 border rounded-md" />
-        <input type="number" name="amount" placeholder="Amount" value={form.amount} onChange={handleChange} className="w-full p-2 border rounded-md" />
-        <input type="date" name="date" value={form.date} onChange={handleChange} className="w-full p-2 border rounded-md" />
-        <input type="text" name="contact" placeholder="Mobile" value={form.contact} onChange={handleChange} className="w-full p-2 border rounded-md" />
-        <input type="email" name="email" placeholder="Email" value={form.email} onChange={handleChange} className="w-full p-2 border rounded-md" />
-        <input type="number" name="warranty" placeholder="warranty" value={form.warranty} onChange={handleChange} className="w-full p-2 border rounded-md" />
-        <input type="text" name="status" placeholder="Payment Status" value={form.status} onChange={handleChange} className="w-full p-2 border rounded-md" />
-        <select name="category" value={form.category} onChange={handleChange} className="w-full p-2 border rounded-md">
-          <option value="telephone">Telephone</option>
-          <option value="laptop2">laptop</option>
-          <option value="EPBAX">EPBAX</option>
-          <option value="Panasonic">Panasonic</option>
-          {/* <option value="Rent">Rent</option> */}
-        </select>
-        <h3 className="text-lg font-semibold">Reminder</h3>
-        <select name="reminder" value={form.reminder} onChange={handleChange} className="w-full p-2 border rounded-md">
-          <option value="">Reminder (months before)</option>
-          <option value="1">1 Month</option>
-          <option value="2">2 Months</option>
-          <option value="3">3 Months</option>
-          <option value="4">4 Months</option>
-          <option value="6">6 Months</option>
-          <option value="12">12 Months</option>
-        </select>
-        <button type="submit" className="w-full bg-blue-600 text-white p-2 rounded-md hover:bg-blue-700">Submit</button>
-      </form>
-    </div>
-        </SheetContent>
+          <form onSubmit={handleSubmit} className="space-y-4">
+            <Label htmlFor="billTo">Bill To</Label>
+            <input type="text" id="billTo" name="billTo" placeholder="Bill to" value={form.billTo} onChange={handleChange} className="w-full p-2 border rounded-md" />
+            
+            <Label htmlFor="amount">Amount</Label>
+            <input type="number" id="amount" name="amount" placeholder="Amount" value={form.amount} onChange={handleChange} className="w-full p-2 border rounded-md" />
+            
+            <Label htmlFor="date">Date</Label>
+            <input type="date" id="date" name="date" value={form.date} onChange={handleChange} className="w-full p-2 border rounded-md" />
+            
+            <Label htmlFor="contact">Mobile</Label>
+            <input type="text" id="contact" name="contact" placeholder="Mobile" value={form.contact} onChange={handleChange} className="w-full p-2 border rounded-md" />
+            
+            <Label htmlFor="email">Email</Label>
+            <input type="email" id="email" name="email" placeholder="Email" value={form.email} onChange={handleChange} className="w-full p-2 border rounded-md" />
+            
+            <Label htmlFor="warranty">Warranty</Label>
+            <input type="number" id="warranty" name="warranty" placeholder="warranty" value={form.warranty} onChange={handleChange} className="w-full p-2 border rounded-md" />
+            
+            <Label htmlFor="status">Payment Status</Label>
+            <input type="text" id="status" name="status" placeholder="Payment Status" value={form.status} onChange={handleChange} className="w-full p-2 border rounded-md" />
+            
+            <Label htmlFor="category">Category</Label>
+            <select id="category" name="category" value={form.category} onChange={handleChange} className="w-full p-2 border rounded-md">
+              <option value="telephone">Telephone</option>
+              <option value="laptop2">laptop</option>
+              <option value="EPBAX">EPBAX</option>
+              <option value="Panasonic">Panasonic</option>
+            </select>
+            
+            <h3 className="text-lg font-semibold">Reminder</h3>
+            <Label htmlFor="reminder">Reminder (months before)</Label>
+            <select id="reminder" name="reminder" value={form.reminder} onChange={handleChange} className="w-full p-2 border rounded-md">
+              <option value="">Reminder (months before)</option>
+              <option value="1">1 Month</option>
+              <option value="2">2 Months</option>
+              <option value="3">3 Months</option>
+              <option value="4">4 Months</option>
+              <option value="6">6 Months</option>
+              <option value="12">12 Months</option>
+            </select>
+            
+            <button type="submit" className="w-full bg-blue-600 text-white p-2 rounded-md hover:bg-blue-700">Submit</button>
+          </form>
+        </div>
+      </SheetContent>
     </Sheet>
   );
 }

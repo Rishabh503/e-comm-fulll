@@ -12,6 +12,7 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet"
 import { useState } from "react"
+import { toast } from "react-toastify"
 
 export function EnquiryForm() {
   // const {name,contact,address,companyName,problem,requirements,status}=req.body 
@@ -53,7 +54,7 @@ export function EnquiryForm() {
     })
     .then((data)=>{
       console.log(data)
-      alert(data.message)
+      toast.success(data.message)
       setName("");setAddress('');setCompanyName('');setContact('');setProblem("");setRequiremnts("")
     }).catch((e)=>console.log("errror in data sendinf or fetching ",e))
   }

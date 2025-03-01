@@ -19,6 +19,7 @@ import EnquiryDashboard from './components/enquiry/EnquiryDashBoard.jsx'
 import EnquiryDetails from './components/enquiry/EnquiryDetails.jsx'
 import {Trial} from './components/others/Trial'
 import { EnquiryForm } from './components/enquiry/EnquiryForm'
+import ComplaintDashBoard from './components/complaints/ComplaintDashBoard'
 
 
 const router=createBrowserRouter(
@@ -34,6 +35,7 @@ const router=createBrowserRouter(
           <Route path='/visit' element={<Visit/>}/>
           <Route path='/bill' element={<BillForm/>}/>
           <Route path='/billDashBoard' element={<BillDashBoard/>}/>
+          <Route path='/complaintsDashBoard' element={<ComplaintDashBoard/>}/>
 
           <Route path='/enquiryDashBoard' element={<EnquiryDashboard/>}/>
           <Route path='/enquiryForm' element={<EnquiryForm/>}/>
