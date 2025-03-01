@@ -18,6 +18,7 @@ import { Visit } from './components/others/Visit.jsx'
 import EnquiryDashboard from './components/enquiry/EnquiryDashBoard.jsx'
 import EnquiryDetails from './components/enquiry/EnquiryDetails.jsx'
 import {Trial} from './components/others/Trial'
+import { EnquiryForm } from './components/enquiry/EnquiryForm'
 
 
 const router=createBrowserRouter(
@@ -33,7 +34,9 @@ const router=createBrowserRouter(
           <Route path='/visit' element={<Visit/>}/>
           <Route path='/bill' element={<BillForm/>}/>
           <Route path='/billDashBoard' element={<BillDashBoard/>}/>
+
           <Route path='/enquiryDashBoard' element={<EnquiryDashboard/>}/>
+          <Route path='/enquiryForm' element={<EnquiryForm/>}/>
           <Route path='/enquiry/:enquiryId' element={<EnquiryDetails/>}/>
   
       </Route>

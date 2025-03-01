@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { toast } from 'react-toastify';
 import Dropbox from './DropDown';
 import { FaSearch } from "react-icons/fa";
+import BillForm from './Bill';
 export const BillDashBoard = ({enquiry}) => {
   const headers=["Client Name","Order Date","BIll No","Reminder","Status","Warranty"]
   const [data,setData]=useState([]);
@@ -72,6 +73,9 @@ export const BillDashBoard = ({enquiry}) => {
             Search
             <FaSearch />
             <input className='bg-gray-200 rounded-md w-3/4 border'  onChange={(e)=>handleSearch(e)} value={search} type="text" name="" id="" />
+          </div>
+          <div>
+            <BillForm/>
           </div>
         </div>
         <div className=' text-start items-center w-full border'>

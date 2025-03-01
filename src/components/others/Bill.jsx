@@ -1,5 +1,19 @@
 import { useState } from "react";
 import { toast, ToastContainer } from "react-toastify";
+// import { Sheet } from "../ui/sheet";
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
+import {
+  Sheet,
+  SheetClose,
+  SheetContent,
+  SheetDescription,
+  SheetFooter,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet"
 
 export default function BillForm() {
   const [form, setFormData] = useState({
@@ -70,8 +84,15 @@ export default function BillForm() {
   };
 
   return (
-    <div className="max-w-lg mx-auto p-6 bg-white shadow-md rounded-lg">
-      <h2 className="text-xl font-semibold mb-4">Add Bill</h2>
+
+    <Sheet>
+
+      <SheetTrigger asChild>
+        <Button className='bg-red-400' variant="outline">New Bill</Button>
+      </SheetTrigger>
+        <SheetContent>
+        <div className="max-w-lg mx-auto p-6 bg-white shadow-md rounded-lg">
+      {/* <h2 className="text-xl font-semibold mb-4">Add Bill</h2> */}
       <form onSubmit={handleSubmit} className="space-y-4">
         <input type="text" name="billTo" placeholder="Bill to" value={form.billTo} onChange={handleChange} className="w-full p-2 border rounded-md" />
         <input type="number" name="amount" placeholder="Amount" value={form.amount} onChange={handleChange} className="w-full p-2 border rounded-md" />
@@ -100,5 +121,7 @@ export default function BillForm() {
         <button type="submit" className="w-full bg-blue-600 text-white p-2 rounded-md hover:bg-blue-700">Submit</button>
       </form>
     </div>
+        </SheetContent>
+    </Sheet>
   );
 }

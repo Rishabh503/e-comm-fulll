@@ -12,15 +12,15 @@ const NavBar = () => {
                    </NavLink>
                 </div>
                 <div className='flex justify-between gap-4'>
-                <NavLink to='/box'>
-                   Products
+                <NavLink to='/start'>
+                   Categories
                 </NavLink>
                 <NavLink to='/enquiryDashBoard'>
                     Enquiries
                 </NavLink>
-                <NavLink to='/bill'>
+                {/* <NavLink to='/bill'>
                      Bill
-                </NavLink>
+                </NavLink> */}
                 <NavLink to='/billDashBoard'>
                  Bill DashBoard
                 </NavLink>
