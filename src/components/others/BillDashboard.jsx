@@ -3,6 +3,7 @@ import { toast } from 'react-toastify';
 import Dropbox from './DropDown';
 import { FaSearch } from "react-icons/fa";
 import BillForm from './Bill';
+import { ComplaintForm } from '../complaints/ComplaintForm';
 export const BillDashBoard = ({enquiry}) => {
   const headers=["Client Name","Order Date","BIll No","Reminder","Status","Warranty"]
   const [data,setData]=useState([]);
@@ -79,16 +80,19 @@ export const BillDashBoard = ({enquiry}) => {
           </div>
         </div>
         <div className=' text-start items-center w-full border'>
-        <div  className='w-full flex gap-3 font-semibold'>
+        <div  className='w-full overflow-x-auto flex gap-3 font-semibold'>
             <p className='w-1/5'>Client Name</p>
             <p className='w-1/5'>Order Date</p>
             <p className='w-1/5'>Bill No</p>
+            <p className='w-1/5'>Amount</p>
             <p className='w-1/5'>Contact</p>
             <p className='w-1/5'>Reminder</p>
             <p className='w-1/5'>Status</p>
+            <p className='w-1/5'>Add</p>
+            
           </div>
         </div>
-        <div className=' text-start items-center w-full border'>
+        <div className=' text-start items-center overflow-x-scroll  w-full border'>
           {
             filteredBillingData.map((item,i)=>(
               <div key={i} className={`w-full border ${i%2==0?"bg-blue-200":"bg-white"}  flex gap-3`}>
@@ -98,6 +102,9 @@ export const BillDashBoard = ({enquiry}) => {
                 </p>
                 <p className='w-1/5'>
                   {item.billTo.createdAt.slice(0,10)}
+                </p>
+                <p className='w-1/5'>
+                  {item.amount}
                 </p>
                 <p className='w-1/5'>
                   {item._id.slice(0,7)}
@@ -114,6 +121,10 @@ export const BillDashBoard = ({enquiry}) => {
                 <p className='w-1/5'>
                   {item.status}
                 </p>
+                <p className='w-1/5'>
+                  <ComplaintForm value={item.billTo._id}/>
+                </p>
+               
               </div>
             ))
             

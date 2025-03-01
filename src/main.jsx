@@ -20,6 +20,9 @@ import EnquiryDetails from './components/enquiry/EnquiryDetails.jsx'
 import {Trial} from './components/others/Trial'
 import { EnquiryForm } from './components/enquiry/EnquiryForm'
 import ComplaintDashBoard from './components/complaints/ComplaintDashBoard'
+import ComplaintDetails from './components/complaints/ComplaintView'
+import UserDashboard from './components/users/UserDashBoard'
+import { CollapsibleDemo } from './components/others/CollapsibleDemo'
 
 
 const router=createBrowserRouter(
@@ -33,14 +36,16 @@ const router=createBrowserRouter(
           {/* for trying */}
           <Route path='/box' element={<Trial/>}/>  
           <Route path='/visit' element={<Visit/>}/>
-          <Route path='/bill' element={<BillForm/>}/>
+          <Route path='/faltu' element={<CollapsibleDemo/>}/>
           <Route path='/billDashBoard' element={<BillDashBoard/>}/>
           <Route path='/complaintsDashBoard' element={<ComplaintDashBoard/>}/>
+          <Route path='/complaint' element={<ComplaintDetails/>}/>
 
           <Route path='/enquiryDashBoard' element={<EnquiryDashboard/>}/>
           <Route path='/enquiryForm' element={<EnquiryForm/>}/>
           <Route path='/enquiry/:enquiryId' element={<EnquiryDetails/>}/>
-  
+
+          <Route path='/userDashBoard' element={<UserDashboard/>}/>
       </Route>
 
     )
