@@ -86,7 +86,7 @@ export function ComplaintForm({value}) {
             </Label>
             <Input id="username" type="text" value={text}  className="col-span-3"  onChange={(e)=>{setText(e.target.value)} } />
           </div>
-          <Button  type="submit">Create Enquiry</Button>
+          <Button  type="submit">Create Complaint</Button>
         </form>
         <SheetFooter>
           <SheetClose asChild>

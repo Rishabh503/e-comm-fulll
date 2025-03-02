@@ -1,5 +1,11 @@
 import React from 'react'
 import { NavLink } from 'react-router'
+import { GoAlert } from "react-icons/go";
+import { FaPray, FaRegUser } from 'react-icons/fa';
+import { IoCallOutline } from "react-icons/io5";
+import { RiBillLine } from "react-icons/ri";
+import { TbCategory } from "react-icons/tb";
+
 
 const NavBar = () => {
   return (
@@ -11,31 +17,45 @@ const NavBar = () => {
                    E-COMMERECE  PLATFORM
                    </NavLink>
                 </div>
-                <div className='flex justify-between gap-4'>
-                <NavLink to='/faltu'>
-                   Faltu 😂
-                </NavLink>
-                <NavLink to='/start'>
-                   Categories
-                </NavLink>
+                <div className='flex  items-center justify-between gap-4'>
+               <div className='items-center flex flex-col'>
+                    <FaPray className='' />
+                        <NavLink className='text-center' to='/faltu'>
+                        Faltu
+                        </NavLink>
+               </div>
+               <div className='items-center flex '>
+
+                            <TbCategory/>
+                        <NavLink to='/start'>
+                        
+                        Categories
+                        </NavLink>
+                    </div>
+                <div clas>
                 <NavLink to='/userDashBoard'>
+                <FaRegUser/>
                    Users
                 </NavLink>
+                </div>
                 <NavLink to='/enquiryDashBoard'>
+                <IoCallOutline />
                     Enquiries
                 </NavLink>
                 <NavLink to='/complaintsDashBoard'>
+                    <GoAlert/>
                     Complaints
                 </NavLink>
                 {/* <NavLink to='/bill'>
                      Bill
                 </NavLink> */}
                 <NavLink to='/billDashBoard'>
-                 Bill DashBoard
+                <RiBillLine />
+                 Bill 
                 </NavLink>
-                <p>
+                {/* <p>
                     Cart
-                </p>
+                </p> */}
                 </div>
             </div>
         </div>

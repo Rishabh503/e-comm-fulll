@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import { FaSearch } from 'react-icons/fa'
 import { EnquiryForm } from '../enquiry/EnquiryForm'
+import { useNavigate } from 'react-router'
 
 const ComplaintDashBoard = () => {
     const [text,setText]=useState("")
   const [loading,setloading]=useState(false);
     const [data,setData]=useState([]);
     const [search,setSearch]=useState("")
-
+    const navigate=useNavigate();
    useEffect(()=>{
     fetch(  "http://localhost:5000/api/v1/complaint/allComplaints")
     .then((response)=>{
@@ -48,7 +49,7 @@ const ComplaintDashBoard = () => {
                           {/* <button onClick={()=>navigate('/enquiryForm')} className="w-auto bg-yellow-300 rounded-sm text-gray-800 px-3 mb-3">
                               Create New Enquiry
                           </button> */}
-                         <EnquiryForm/>
+                         {/* <EnquiryForm/> */}
                       </div>
 
         <div className="grid grid-cols-8  bg-gray-200 text-gray-800 font-semibold p-3 rounded-md">
@@ -66,7 +67,7 @@ const ComplaintDashBoard = () => {
                         {
                             filteredData.map((complaint,i)=>(
                                 // console.log(complaint)
-                             <div key={i} className={`grid grid-cols-8 ${i%2!=0?"bg-green-200":"bg-white"}  text-gray-800 font-semibold p-3 rounded-md`}>
+                             <div key={i} className={`grid grid-cols-8 ${i%2!=0?"bg-[#97e0bb]":"bg-white"}  text-gray-800 font-semibold p-3 rounded-md`}>
                                 <span>
                                     {complaint.user.username}
                                 </span>
@@ -88,7 +89,7 @@ const ComplaintDashBoard = () => {
                                 <span>
                                     {complaint.status}
                                 </span>
-                                <button  className="bg-orange-400 h-10 text-white px-4 py-1 rounded-md hover:bg-blue-700">
+                                <button onClick={()=>navigate(`/complaint/${complaint._id}`)} className="bg-[#4f8fd3] h-10 text-white px-4 py-1 rounded-md hover:bg-blue-700">
             View
           </button>
                              </div>

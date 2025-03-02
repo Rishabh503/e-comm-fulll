@@ -88,7 +88,7 @@ export const BillDashBoard = ({enquiry}) => {
             <p className='w-1/5'>Contact</p>
             <p className='w-1/5'>Reminder</p>
             <p className='w-1/5'>Status</p>
-            <p className='w-1/5'>Add</p>
+            {/* <p className='w-1/5'>Add</p> */}
             
           </div>
         </div>
@@ -121,9 +121,9 @@ export const BillDashBoard = ({enquiry}) => {
                 <p className='w-1/5'>
                   {item.status}
                 </p>
-                <p className='w-1/5'>
+                {/* <p className='w-1/5'>
                   <ComplaintForm value={item.billTo._id}/>
-                </p>
+                </p> */}
                
               </div>
             ))

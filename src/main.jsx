@@ -40,6 +40,7 @@ const router=createBrowserRouter(
           <Route path='/billDashBoard' element={<BillDashBoard/>}/>
           <Route path='/complaintsDashBoard' element={<ComplaintDashBoard/>}/>
           <Route path='/complaint' element={<ComplaintDetails/>}/>
+          <Route path='/complaint/:complaintId' element={<ComplaintDetails/>}/>
 
           <Route path='/enquiryDashBoard' element={<EnquiryDashboard/>}/>
           <Route path='/enquiryForm' element={<EnquiryForm/>}/>

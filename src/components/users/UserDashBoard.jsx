@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { FaSearch } from "react-icons/fa";
 import { CollapsibleDemo } from "../others/CollapsibleDemo";
+import { ComplaintForm } from "../complaints/ComplaintForm";
+import { EnquiryForm } from "../enquiry/EnquiryForm";
 
 const UserDashboard = () => {
   const [data, setData] = useState([]);
@@ -49,9 +51,12 @@ const UserDashboard = () => {
               type="text"
               onChange={(e) => setSearch(e.target.value)}
             />
+          <div className="w-auto flex justify-end">
+          <EnquiryForm/>
+          </div>
           </div>
         </div>
-        <div className="grid grid-cols-7 bg-gray-200 text-gray-800 font-semibold p-3 rounded-md">
+        <div className="grid grid-cols-8 bg-gray-200 text-gray-800 font-semibold p-3 rounded-md">
           <span>Full Name</span>
           <span>Username</span>
           <span>Email</span>
@@ -59,12 +64,13 @@ const UserDashboard = () => {
           <span>Address</span>
           <span>Bills</span>
           <span>Complaints</span>
+          <span>New</span>
         </div>
 
         {filteredData.map((user, index) => (
           <div
             key={index}
-            className={`grid ${index % 2 === 0 ? "bg-blue-200" : "bg-white"} grid-cols-7 gap-5 h-auto items-center border-b border-gray-300 p-3`}
+            className={`grid ${index % 2 === 0 ? "bg-blue-200" : "bg-white"} grid-cols-8 gap-5 h-auto items-center border-b border-gray-300 p-3`}
           >
             <span className="truncate">{user.fullName}</span>
             <span>{user.username}</span>
@@ -80,7 +86,9 @@ const UserDashboard = () => {
           
                 <CollapsibleDemo bills={user.bills} display={"Bill"}  className=""/>
                 <CollapsibleDemo bills={user.complaints}display={"Complaint"}  className=""/>
-          
+                <p className='w-1/5'>
+                                  <ComplaintForm value={user._id}/>
+                                </p>
           </div>
         ))}
       </div>

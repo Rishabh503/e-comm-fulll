@@ -1,10 +1,14 @@
+import { configDotenv } from "dotenv";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
 
 const ComplaintDetails = () => {
   const { complaintId } = useParams();
+  console.log(complaintId)
   const [complaint, setComplaint] = useState({});
   const [loading, setLoading] = useState(false);
+
+  // const complaintId="67c2f33737db3ab612eb7694";
   const complaint2={
     "complaint": "test complaint part 1",
     "createdAt": "2025-03-01T11:44:55.512Z",
@@ -36,32 +40,36 @@ const ComplaintDetails = () => {
       }
     ]
   }
-//   useEffect(() => {
-//     fetch(`http://localhost:5000/api/v1/complaints/getComplaint/${complaintId}`)
-//       .then((response) => {
-//         if (!response.ok) throw new Error("Error fetching the response");
-//         return response.json();
-//       })
-//       .then((data) => {
-//         setComplaint(data);
-//         setLoading(true);
-//       })
-//       .catch((e) => console.log("Error getting data from backend", e));
-//   }, []);
+  useEffect(() => {
+    fetch(`http://localhost:5000/api/v1/complaint/getComplaint/${complaintId}`)
+      .then((response) => {
+        if (!response.ok) throw new Error("Error fetching the response");
+        return response.json();
+      })
+      .then((data) => {
+        console.log(data)
+        setComplaint(data);
+        setLoading(true);
+      })
+      .catch((e) => console.log("Error getting data from backend", e));
+  }, []);
 
-//   const complaintData = complaint.data || {};
-//   console.log("Complaint Data:", complaintData);
-
+  const complaintData = complaint.data || {};
+  console.log("Complaint Data:", complaintData);
+  const avatarUrl=loading?complaintData.user.avatarUrl:"" ;
 //   const followUpData = complaintData.followUps || [];
 //   console.log("Follow-Ups Data:", followUpData);
-const complaintData=complaint2;
+// const complaintData=complaint2;
   return (
-    <section className="min-h-screen w-full p-10">
-      <div className="w-full mx-auto p-5 bg-white shadow-lg rounded-lg">
+    <section className="min-h-screen  w-full p-10">
+      <div className="w-full mx-auto p-5 bg-red-200 shadow-lg rounded-lg">
         <h2 className="text-3xl font-bold text-gray-800 mb-4 text-center">
           <span className="font-semibold">Complaint:</span> {complaintData.complaint}
         </h2>
-        <div className="grid grid-cols-2 gap-4 text-gray-700 text-lg">
+
+        <div className="flex">    
+          <div className=" w-1/2  text-gray-700 text-lg">
+        <h3 className="text-2xl font-semibold text-gray-800 mb-3">Complaint Details</h3>
           <p><strong>Status:</strong> {complaintData.status}</p>
           <p><strong>Device:</strong> {complaintData.device}</p>
           <p><strong>Description:</strong> {complaintData.text}</p>
@@ -69,29 +77,36 @@ const complaintData=complaint2;
           <p><strong>Updated At:</strong> {new Date(complaintData.updatedAt).toLocaleString()}</p>
         </div>
 
-        {/* User Details */}
+      
         {complaintData.user && (
-          <div className="mt-6">
-            <h3 className="text-2xl font-semibold text-gray-800 mb-3">User Details</h3>
+          <div className=" w-1/2  text-gray-700 text-lg">
+                <h3 className="text-2xl font-semibold text-gray-800 mb-3">User Details</h3>
             <p><strong>Name:</strong> {complaintData.user.fullName}</p>
             <p><strong>Username:</strong> {complaintData.user.username}</p>
             <p><strong>Email:</strong> {complaintData.user.email}</p>
             <p><strong>Contact:</strong> {complaintData.user.contact}</p>
             <p><strong>Address:</strong> {complaintData.user.address}</p>
-            <img
-              src={complaintData.user.avatarUrl}
-              alt="User Avatar"
-              className="w-24 h-24 rounded-full mt-3"
-            />
+         
           </div>
         )}
+
+        <div className="w-[8%]">
+        <img
+                        src={avatarUrl}
+                        alt="User Avatar"
+                        className="w-24 h-24 rounded-full mt-3"
+                      />
+        </div>
+      </div>
+        
+       
 
         {/* Follow-Ups Section */}
         <div className="mt-8">
           <h3 className="text-2xl font-semibold text-gray-800 mb-3">Follow-Ups</h3>
-          {loading && followUpData.length > 0 ? (
+          {loading && complaintData.followUps.length > 0 ? (
             <div className="flex flex-col gap-4 text-gray-700">
-              {followUpData.map((followUp, index) => (
+              {complaintData.followUps.map((followUp, index) => (
                 <div className="border p-4 shadow-md rounded-lg" key={index}>
                   <p className="text-lg"><strong>Remarks:</strong> {followUp.text}</p>
                 </div>

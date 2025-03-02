@@ -36,12 +36,12 @@ export function CollapsibleDemo({bills,display}) {
       <CollapsibleContent className="space-y-2">
         
 
-        {
+        {bills.length>0?
             bills.map((bill,i)=>(
                 <div key={i} className="rounded-md border px-4 py-3 font-mono text-sm">
                     {display} No {i+1}
                 </div>
-            ))
+            )):""
         }
       </CollapsibleContent>
     </Collapsible>
