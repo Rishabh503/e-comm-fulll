@@ -4,6 +4,8 @@ import { FaSearch } from "react-icons/fa";
 import { CollapsibleDemo } from "../others/CollapsibleDemo";
 import { ComplaintForm } from "../complaints/ComplaintForm";
 import { EnquiryForm } from "../enquiry/EnquiryForm";
+import { CollapsibleDemoComplaint } from "../others/CollapsibleDemoComplaint";
+import { RegisterForm } from "./RegisterForm";
 
 const UserDashboard = () => {
   const [data, setData] = useState([]);
@@ -37,7 +39,11 @@ const UserDashboard = () => {
       user.contact.toString().includes(search) ||
       user.createdAt.includes(search)
   );
+  const username=search;
+  const tryingSorting = filteredData.sort((a, b) => a.username.localeCompare(b.username)) || [];
 
+  console.log("sorrted data ",tryingSorting)
+  // students.sort((a, b) => a.age - b.age);
   return (
     <section className="min-h-screen w-full">
       <div className="w-full mx-auto p-6">
@@ -53,6 +59,7 @@ const UserDashboard = () => {
             />
           <div className="w-auto flex justify-end">
           <EnquiryForm/>
+          <RegisterForm/>
           </div>
           </div>
         </div>
@@ -85,10 +92,10 @@ const UserDashboard = () => {
             </button> */}
           
                 <CollapsibleDemo bills={user.bills} display={"Bill"}  className=""/>
-                <CollapsibleDemo bills={user.complaints}display={"Complaint"}  className=""/>
+                <CollapsibleDemoComplaint bills={user.complaints}display={"Complaint"}  className=""/>
                 <p className='w-1/5'>
                                   <ComplaintForm value={user._id}/>
-                                </p>
+</p>
           </div>
         ))}
       </div>
