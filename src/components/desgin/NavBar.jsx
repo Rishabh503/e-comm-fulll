@@ -24,7 +24,7 @@ const NavBar = () => {
                         Faltu
                         </NavLink>
                </div>
-               <div className='items-center flex '>
+               <div className='items-center flex flex-col'>
 
                             <TbCategory/>
                         <NavLink to='/start'>

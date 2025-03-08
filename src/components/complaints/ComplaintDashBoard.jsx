@@ -31,7 +31,7 @@ const ComplaintDashBoard = () => {
           complanints.createdAt.includes(search)  ||
           complanints.user.contact.toString().includes(search) ||
           complanints.device.includes(search) ||
-          complanints.status.includes(search)
+          complanints.status.toLowerCase().includes(search.toLocaleLowerCase())
         //   complanints.problem.includes(search)
    ) || []
   return (
@@ -86,9 +86,15 @@ const ComplaintDashBoard = () => {
                                 <span>
                                     {complaint.text}
                                 </span>
-                                <span>
-                                    {complaint.status}
-                                </span>
+                                <span
+            className={`h-10 text-white px-4 py-1 flex items-center rounded-md text-center mr-2 text-sm ${
+              complaint.status === "pending"
+                ? "bg-red-500"
+                : complaint.status === "In Progress" || complaint.status === "in-progress"
+                ? "bg-blue-500"
+                : complaint.status=="Resolved" || complaint.status==="resolved"? "bg-green-500" : "bg-red-500"
+            }`}
+          >{complaint.status} </span>
                                 <button onClick={()=>navigate(`/complaint/${complaint._id}`)} className="bg-[#4f8fd3] h-10 text-white px-4 py-1 rounded-md hover:bg-blue-700">
             View
           </button>

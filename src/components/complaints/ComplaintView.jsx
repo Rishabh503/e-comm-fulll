@@ -1,7 +1,10 @@
 import { configDotenv } from "dotenv";
 import React, { useEffect, useState } from "react";
+import { FaHome, FaHouseUser } from "react-icons/fa";
 import { useParams } from "react-router";
-
+import { IoIosPersonAdd } from "react-icons/io";
+import { VisitComplaint } from "./VisitComplaint";
+import { FollowUpComplaint } from "./FollowUpComplaint";
 const ComplaintDetails = () => {
   const { complaintId } = useParams();
   console.log(complaintId)
@@ -57,8 +60,10 @@ const ComplaintDetails = () => {
   const complaintData = complaint.data || {};
   console.log("Complaint Data:", complaintData);
   const avatarUrl=loading?complaintData.user.avatarUrl:"" ;
-//   const followUpData = complaintData.followUps || [];
-//   console.log("Follow-Ups Data:", followUpData);
+  const followUpData = complaintData.followUps || [];
+  console.log("Follow-Ups Data:", followUpData);
+  const visits=complaintData.visits ||[]
+  console.log("visits Data:", visits);
 // const complaintData=complaint2;
   return (
     <section className="min-h-screen  w-full p-10">
@@ -66,7 +71,7 @@ const ComplaintDetails = () => {
         <h2 className="text-3xl font-bold text-gray-800 mb-4 text-center">
           <span className="font-semibold">Complaint:</span> {complaintData.complaint}
         </h2>
-
+          {/* details */}
         <div className="flex">    
           <div className=" w-1/2  text-gray-700 text-lg">
         <h3 className="text-2xl font-semibold text-gray-800 mb-3">Complaint Details</h3>
@@ -99,23 +104,64 @@ const ComplaintDetails = () => {
         </div>
       </div>
         
-       
-
-        {/* Follow-Ups Section */}
-        <div className="mt-8">
-          <h3 className="text-2xl font-semibold text-gray-800 mb-3">Follow-Ups</h3>
-          {loading && complaintData.followUps.length > 0 ? (
-            <div className="flex flex-col gap-4 text-gray-700">
-              {complaintData.followUps.map((followUp, index) => (
-                <div className="border p-4 shadow-md rounded-lg" key={index}>
-                  <p className="text-lg"><strong>Remarks:</strong> {followUp.text}</p>
-                </div>
-              ))}
+        {/* visitst */}
+        <div className="p-1">
+            <div className="flex items-center my-5 justify-between">
+              <h1 className="font-semibold  text-xl">VISITS</h1>
+              <button >
+            <span className="text-3xl text-blue-700"> 
+         <VisitComplaint display={ <FaHouseUser />} id={complaintId}/>
+              </span>
+              </button>
             </div>
-          ) : (
-            <p className="text-gray-500">No follow-ups recorded</p>
-          )}
-        </div>
+          <div className="border px-2 min-h-10 border-black font-semibold text-lg  flex">
+                      <p className="w-1/4">Visited By</p>
+                      <p className="w-1/4">Date</p>
+                      <p className="w-1/4">Details</p>
+                      <p className="w-1/4">Status</p>
+                 </div>
+            
+              {
+                visits.map((followUp)=>(
+                  <div className="border px-2 min-h-10 border-black flex">
+                      <p className="w-1/4">{followUp.visitedBy}</p>
+                      <p className="w-1/4">{followUp.dateOfVisit.slice(0,10)}</p>
+                      <p className="w-1/4">{followUp.textArea}</p>
+                      <p className="w-1/4">{followUp.status}</p>
+                 </div>
+                ))
+              }
+          </div>
+
+        {/* follow Section */}
+          <div className="p-1">
+            <div className="flex items-center my-5 justify-between">
+              <h1 className="font-semibold  text-xl">FOLLOW UPS</h1>
+              <button>
+                
+            <span className="text-3xl text-blue-700">  <FollowUpComplaint id={complaintId} display={<IoIosPersonAdd/>}/> </span>
+              </button>
+            </div>
+          <div className="border border-black px-2 min-h-10 font-semibold text-lg  flex">
+                      <p className="w-1/4">Name</p>
+                      <p className="w-1/4">Contact</p>
+                      <p className="w-1/4">Text</p>
+                      <p className="w-1/4">Date</p>
+                 </div>
+            
+              {
+                followUpData.map((followUp)=>(
+                  <div className="border min-h-10 px-2 border-black flex">
+                      <p className="w-1/4">{followUp.name}</p>
+                      <p className="w-1/4">{followUp.contact}</p>
+                      <p className="w-1/4">{followUp.text}</p>
+                      <p className="w-1/4">{followUp.date.slice(0,10)}</p>
+                 </div>
+                ))
+              }
+          </div>
+
+         
       </div>
     </section>
   );

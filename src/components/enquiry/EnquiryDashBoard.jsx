@@ -175,11 +175,11 @@ const EnquiryDashboard = () => {
           <span className="truncate">{enquiry.requirements}</span>
           <span
             className={`px-3 py-1 rounded-md text-white text-sm ${
-              enquiry.status === "Pending"
-                ? "bg-yellow-500"
-                : enquiry.status === "In Progress"
+              enquiry.status === "pending"
+                ? "bg-red-500"
+                : enquiry.status === "In Progress" || enquiry.status === "in-progress"
                 ? "bg-blue-500"
-                : "bg-green-500"
+                : enquiry.status=="Resolved" || enquiry.status==="resolved"? "bg-green-500" : "bg-red-500"
             }`}
           >
             {enquiry.status}
