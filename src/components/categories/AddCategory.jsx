@@ -60,7 +60,7 @@ export const AddCategory=()=> {
       </DialogTrigger>
       <DialogContent className="p-6">
       <DialogTitle>
-          <p className="text-2xl font-semibold">New Visit</p>
+          <p className="text-2xl font-semibold">New Category</p>
         </DialogTitle>
         <form
           onSubmit={(e) => handleSubmit(e)}

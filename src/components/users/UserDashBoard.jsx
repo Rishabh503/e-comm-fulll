@@ -6,6 +6,7 @@ import { ComplaintForm } from "../complaints/ComplaintForm";
 import { EnquiryForm } from "../enquiry/EnquiryForm";
 import { CollapsibleDemoComplaint } from "../others/CollapsibleDemoComplaint";
 import { RegisterForm } from "./RegisterForm";
+import ExistingUserBillForm from "../bills/ExisitingUserBillForm";
 
 const UserDashboard = () => {
   const [data, setData] = useState([]);
@@ -63,15 +64,17 @@ const UserDashboard = () => {
           </div>
           </div>
         </div>
-        <div className="grid grid-cols-8 bg-gray-200 text-gray-800 font-semibold p-3 rounded-md">
+        <div className="grid grid-cols-8 bg-gray-200 text-gray-800 gap-5 font-semibold p-3 rounded-md">
           <span>Full Name</span>
-          <span>Username</span>
+          {/* <span>Username</span> */}
           <span>Email</span>
           <span>Contact</span>
           <span>Address</span>
           <span>Bills</span>
           <span>Complaints</span>
-          <span>New</span>
+          <span>New Complaint</span>
+          <span>New Bill</span>
+
         </div>
 
         {filteredData.map((user, index) => (
@@ -80,8 +83,8 @@ const UserDashboard = () => {
             className={`grid ${index % 2 === 0 ? "bg-blue-200" : "bg-white"} grid-cols-8 gap-5 h-auto items-center border-b border-gray-300 p-3`}
           >
             <span className="truncate">{user.fullName}</span>
-            <span>{user.username}</span>
-            <span>{user.email}</span>
+            {/* <span>{user.username}</span> */}
+            <span className="overflow-x-hidden">{user.email}</span>
             <span>{user.contact}</span>
             <span className="truncate">{user.address}</span>
             {/* <button
@@ -95,6 +98,9 @@ const UserDashboard = () => {
                 <CollapsibleDemoComplaint bills={user.complaints}display={"Complaint"}  className=""/>
                 <p className='w-1/5'>
                                   <ComplaintForm value={user._id}/>
+</p>
+<p>
+                    <ExistingUserBillForm value={user._id}/>
 </p>
           </div>
         ))}

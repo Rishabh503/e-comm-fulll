@@ -9,10 +9,12 @@ import {
   CollapsibleContent,
   CollapsibleTrigger,
 } from "@/components/ui/collapsible"
+import { NavLink, useNavigate } from "react-router"
 
 export function CollapsibleDemo({bills,display}) {
   const [isOpen, setIsOpen] = React.useState(false)
-    // console.log(bills)
+  const navigate=useNavigate()    
+  console.log(bills)
   return (
     <Collapsible
       open={isOpen}
@@ -39,7 +41,10 @@ export function CollapsibleDemo({bills,display}) {
         {bills.length>0?
             bills.map((bill,i)=>(
                 <div key={i} className="rounded-md border px-4 py-3 font-mono text-sm">
-                    {display} No {i+1}
+                  
+                    <button  className="hover:underline" onClick={()=>navigate(`/billView/${bill}`)}>
+                      Bill No {i+1}
+                    </button>
                 </div>
             )):""
         }

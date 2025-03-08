@@ -10,7 +10,11 @@ export default function Dropbox({items}) {
     //   ];
   const [open, setOpen] = useState(false);
   const [selectedItems, setSelectedItems] = useState([]);
-
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    return `${date.getDate().toString().padStart(2, "0")}-${(date.getMonth() + 1).toString().padStart(2, "0")}-${date.getFullYear()}`;
+  };
+  
   if (!items || items.length === 0) return <p>No items available</p>;
 
   const toggleSelection = (item) => {
@@ -30,7 +34,10 @@ export default function Dropbox({items}) {
         className="p-2 flex items-center justify-between cursor-pointer  text-black rounded-t-lg"
         onClick={() => setOpen(!open)}
       >
-        <span>{items[0].date.slice(0,10)}</span>
+       <span>
+  {items.length > 1 ? formatDate(items[1].date) : formatDate(items[0].date)}
+</span>
+
         <span>{open ? "▲" : "▼"}</span>
       </div>
 
@@ -55,7 +62,7 @@ export default function Dropbox({items}) {
                   onView(item);
                 }}
               >
-                {item.date.slice(0,10)}
+                {formatDate(item.date.slice(0,10))}
               </a>
             </div>
           ))}

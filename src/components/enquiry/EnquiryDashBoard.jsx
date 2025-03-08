@@ -1,7 +1,6 @@
-import React, { use, useEffect, useState } from "react";
-import { BillDashBoard } from "../others/BillDashboard";
-import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 import { FaSearch } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 import { EnquiryForm } from "./EnquiryForm";
 // const enquiries =[
 //     {
